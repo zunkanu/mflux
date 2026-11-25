@@ -30,7 +30,7 @@ class VAEDecodeOptions:
 
     @staticmethod
     def apply(args, model) -> None:
-        if getattr(args, "vae_full_precision", False):
+        if getattr(args, "vae_full_precision", False) and getattr(model, "vae", None) is not None:
             model.vae.decode_mode = VAEBlockDecoder.FULL_PRECISION
 
     @staticmethod
